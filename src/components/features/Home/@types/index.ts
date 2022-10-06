@@ -7,3 +7,8 @@ export type course = {
   skill: string[];
   description: string;
 };
+
+export type contentContextType = {
+  showMenu?: boolean;
+  checkedSkills: skillType[] | [];
+};

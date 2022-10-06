@@ -11,7 +11,7 @@ export const CourseContainer = styled(ContainerGeneric)`
   border-radius: 3px;
   flex-direction: column;
   background-color: transparent;
-  box-shadow: 1.1px 1.1px 4px #0a44fa80;
+  box-shadow: 1.1px 1.1px 4px ${(props) => props.theme.palette.background.main};
 `;
 export const Image = styled.img`
   width: 100%;
@@ -22,16 +22,21 @@ export const Title = styled.h2`
   font-size: ${(props) => props.theme.typography.fontSizeRegular}rem;
 `;
 export const Skills = styled.ul`
+  gap: 5px;
   display: flex;
+  flex-wrap: wrap;
   overflow: hidden;
   max-width: 270px;
   align-items: start;
   justify-content: start;
 `;
 export const Skill = styled.li`
+  padding: 5px;
   margin: 0 5px;
   list-style: none;
-  color: ${(props) => props.theme.palette.text.medium};
+  border-radius: 3px;
+  color: ${(props) => props.theme.palette.text.light};
+  background-color: ${(props) => props.theme.palette.text.medium};
   font-size: ${(props) => props.theme.typography.fontSize - 0.4}rem;
 `;
 export const Text = styled.p`
