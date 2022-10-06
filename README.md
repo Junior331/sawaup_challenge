@@ -22,8 +22,8 @@ npm run dev
 
 ### To do
 
-- [ ] Criar estrutura inicial do projeto
-- [ ] Implementação de Theme e style components
+- [x] Criar estrutura inicial do projeto
+- [x] Implementação de Theme e style components
 - [ ] Header
 - [ ] Menu Skill
 - [ ] Courses
