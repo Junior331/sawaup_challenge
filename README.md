@@ -27,3 +27,7 @@ npm run dev
 - [x] Header
 - [x] Menu Skill
 - [x] Courses
+
+
+## Demo
+- https://luxury-kataifi-dbe543.netlify.app/
