@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import media from 'styled-media-query';
 
 export const ContainerGeneric = styled.div<{ column?: boolean }>`
   display: flex;
@@ -137,3 +138,18 @@ export const Label = styled.label<{ selected?: boolean }>`
 
 export const Item = styled(ContainerGeneric)``;
 export const ContentCourses = styled(ContainerGeneric)``;
+
+export const Iframe = styled.iframe`
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  min-height: 425px;
+  line-height: 20px;
+  border-radius: 5px;
+  ${media.lessThan('medium')`
+    width: 95%;
+    min-height: 0px;
+    max-height: 225px;
+  `}
+`;

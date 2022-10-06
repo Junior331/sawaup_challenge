@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-shadow */
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -7,10 +7,12 @@ import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { courses } from '../../../service/mock/courses';
 import { skills } from '../../../service/mock/skills';
+import { useModal } from '../../modules/Modal';
 import { skillType } from './@types';
 import { Course } from './components/Course';
 import * as S from './HomeStyled';
 const Home = () => {
+  const { showModal } = useModal();
   const [selectSkills, setSelectSkills] = useState(skills);
   const [checkedSkills, setCheckedSkills] = useState<skillType[]>([]);
   const [count, setCount] = useState(0);
@@ -32,6 +34,38 @@ const Home = () => {
     setCheckedSkills(checked);
     setCount(checked.length);
   };
+  const handleShowModal = useCallback(() => {
+    showModal(
+      <S.Iframe
+        id="Video"
+        height="345"
+        frameBorder="0"
+        allowFullScreen
+        title="YouTube video player"
+        src="https://www.youtube.com/embed/0mYq5LrQN1s"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      />,
+      '700px',
+      false,
+      '0'
+    );
+  }, [showModal]);
+  // const handleVideo = () => {
+  //   showModal(
+  //     <S.Iframe
+  //       id="Video"
+  //       height="345"
+  //       frameBorder="0"
+  //       allowFullScreen
+  //       title="YouTube video player"
+  //       src="https://www.youtube.com/embed/0mYq5LrQN1s"
+  //       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  //     />,
+  //     '700px',
+  //     false,
+  //     '0'
+  //   );
+  // };
 
   return (
     <S.HomeContainer>
@@ -80,28 +114,26 @@ const Home = () => {
       <S.ContainerCourses column>
         <S.ContainerGeneric column>
           <S.Title>Courses based on your skills</S.Title>
-          {checkedSkills.length >= 2 && (
-            <Swiper
-              loop={true}
-              spaceBetween={10}
-              slidesPerView={3}
-              navigation={true}
-              modules={[Navigation]}
-              className="mySwiper"
-            >
-              {courses.map((course, index) => {
-                return (
-                  <SwiperSlide key={index}>
-                    <Course
-                      title={course.title}
-                      skill={course.skill}
-                      description={course.description}
-                    />
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
-          )}
+          <Swiper
+            loop={true}
+            spaceBetween={10}
+            slidesPerView={3}
+            navigation={true}
+            modules={[Navigation]}
+            className="mySwiper"
+          >
+            {courses.map((course, index) => {
+              return (
+                <SwiperSlide onClick={() => handleShowModal()} key={index}>
+                  <Course
+                    title={course.title}
+                    skill={course.skill}
+                    description={course.description}
+                  />
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
         </S.ContainerGeneric>
         <S.ContainerGeneric column>
           <S.Title>Courses Avaliable</S.Title>
@@ -116,7 +148,7 @@ const Home = () => {
             >
               {courses.map((course, index) => {
                 return (
-                  <SwiperSlide key={index}>
+                  <SwiperSlide onClick={() => handleShowModal()} key={index}>
                     <Course
                       title={course.title}
                       skill={course.skill}
