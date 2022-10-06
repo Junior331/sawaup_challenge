@@ -24,6 +24,6 @@ npm run dev
 
 - [x] Criar estrutura inicial do projeto
 - [x] Implementação de Theme e style components
-- [ ] Header
+- [x] Header
 - [ ] Menu Skill
 - [ ] Courses
