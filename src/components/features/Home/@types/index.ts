@@ -7,7 +7,6 @@ export type course = {
   like: boolean;
   skill: string[];
   videoId: string;
-  description: string;
 };
 
 export type contentContextType = {

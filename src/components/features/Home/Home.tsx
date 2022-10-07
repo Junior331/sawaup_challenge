@@ -39,7 +39,6 @@ const Home = () => {
                       title={course.title}
                       skill={course.skill}
                       videoId={course.videoId}
-                      description={course.description}
                     />
                   </SwiperSlide>
                 );
@@ -65,7 +64,6 @@ const Home = () => {
                     title={item.title}
                     skill={item.skill}
                     videoId={item.videoId}
-                    description={item.description}
                   />
                 </SwiperSlide>
               );
@@ -91,7 +89,6 @@ const Home = () => {
                       title={item.title}
                       skill={item.skill}
                       videoId={item.videoId}
-                      description={item.description}
                     />
                   </SwiperSlide>
                 );

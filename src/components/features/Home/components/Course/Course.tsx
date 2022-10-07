@@ -6,7 +6,7 @@ import { useContentUser } from '../../userContent';
 import * as S from './CourseStyled';
 
 /* eslint-disable @typescript-eslint/no-shadow */
-const Course = ({ title, skill, description, like }: course) => {
+const Course = ({ title, skill, like }: course) => {
   const { showModal } = useModal();
   const { userContent, setUserContent } = useContentUser();
 
@@ -68,7 +68,6 @@ const Course = ({ title, skill, description, like }: course) => {
           return <S.Skill key={index}>{skill}</S.Skill>;
         })}
       </S.Skills>
-      {/* <S.Text>{description}</S.Text> */}
     </S.CourseContainer>
   );
 };
