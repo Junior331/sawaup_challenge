@@ -68,7 +68,7 @@ const Course = ({ title, skill, description, like }: course) => {
           return <S.Skill key={index}>{skill}</S.Skill>;
         })}
       </S.Skills>
-      <S.Text>{description}</S.Text>
+      {/* <S.Text>{description}</S.Text> */}
     </S.CourseContainer>
   );
 };

@@ -65,8 +65,8 @@ export const ContentCourses = styled(ContainerGeneric)<{ small?: boolean }>`
   .swiper {
     margin: 0;
     width: 100%;
-    height: 540px;
-    padding: 10px 0;
+    padding: 15px;
+    min-height: 300px;
     max-width: calc(100vw - 370px);
     .swiper-slide {
       width: 100%;

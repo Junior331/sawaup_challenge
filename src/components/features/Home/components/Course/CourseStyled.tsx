@@ -9,7 +9,8 @@ const ContainerGeneric = styled.div`
 export const CourseContainer = styled(ContainerGeneric)`
   width: 100%;
   height: auto;
-  border-radius: 3px;
+  border-radius: 20px;
+  padding-bottom: 10px;
   flex-direction: column;
   background-color: transparent;
   box-shadow: 1.1px 1.1px 4px ${(props) => props.theme.palette.background.main};
@@ -17,6 +18,8 @@ export const CourseContainer = styled(ContainerGeneric)`
 export const Image = styled.img`
   width: 100%;
   cursor: pointer;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 `;
 export const Title = styled.h2`
   color: ${(props) => props.theme.palette.text.dark};

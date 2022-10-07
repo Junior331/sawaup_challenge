@@ -4,7 +4,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { courses } from '../../../service/mock/courses';
 import { Menu } from '../../modules/Menu';
 import { course } from './@types';
 import { Course } from './components/Course';
@@ -14,7 +13,7 @@ const Home = () => {
   const { userContent } = useContentUser();
 
   const skillSelect = userContent?.checkedSkills?.map((item) => item.label);
-  const courseSelected = courses.filter(
+  const courseSelected = userContent.myCourses.filter(
     (course) => !!skillSelect?.find((a) => course.skill.includes(a))
   );
   return (
@@ -26,7 +25,7 @@ const Home = () => {
           {userContent?.checkedSkills?.length >= 2 && (
             <Swiper
               loop={true}
-              spaceBetween={80}
+              spaceBetween={75}
               slidesPerView={3}
               navigation={true}
               modules={[Navigation]}
@@ -52,7 +51,7 @@ const Home = () => {
           <S.Title>Courses Avaliable</S.Title>
           <Swiper
             loop={true}
-            spaceBetween={80}
+            spaceBetween={75}
             slidesPerView={3}
             navigation={true}
             modules={[Navigation]}
@@ -78,7 +77,7 @@ const Home = () => {
             <S.Title>Liked courses</S.Title>
             <Swiper
               loop={true}
-              spaceBetween={80}
+              spaceBetween={75}
               slidesPerView={3}
               navigation={true}
               modules={[Navigation]}
