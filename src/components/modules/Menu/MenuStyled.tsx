@@ -15,7 +15,6 @@ export const ContainerGeneric = styled.div<{ column?: boolean }>`
 export const MenuContainer = styled(ContainerGeneric)<{ active?: boolean }>`
   height: 100%;
   padding: 15px;
-  min-width: 300px;
   max-width: 300px;
   box-shadow: 0px 2px 3px ${(props) => props.theme.palette.background.main};
   ${(props) => media.lessThan('medium')`

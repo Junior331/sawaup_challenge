@@ -2,8 +2,10 @@ import * as S from './ModalStyled';
 import { useModal } from './useModal';
 
 const Modal = () => {
-  const { open, closeModal, content, maxWidth, small, padding } = useModal();
+  const { open, closeModal, showModal, content, maxWidth, small, padding } =
+    useModal();
   const handleClose = () => {
+    showModal(<></>, '0px', false, '0');
     closeModal();
   };
 

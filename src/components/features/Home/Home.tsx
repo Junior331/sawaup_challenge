@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-shadow */
-import { useCallback } from 'react';
 import { Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -7,45 +6,27 @@ import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { courses } from '../../../service/mock/courses';
 import { Menu } from '../../modules/Menu';
-import { useModal } from '../../modules/Modal';
+import { course } from './@types';
 import { Course } from './components/Course';
 import * as S from './HomeStyled';
 import { useContentUser } from './userContent';
 const Home = () => {
-  const { showModal } = useModal();
   const { userContent } = useContentUser();
-  const handleShowModal = useCallback(() => {
-    showModal(
-      <S.Iframe
-        id="Video"
-        height="345"
-        frameBorder="0"
-        allowFullScreen
-        title="YouTube video player"
-        src="https://www.youtube.com/embed/0mYq5LrQN1s"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      />,
-      '700px',
-      false,
-      '0'
-    );
-  }, [showModal]);
 
   const skillSelect = userContent?.checkedSkills?.map((item) => item.label);
   const courseSelected = courses.filter(
     (course) => !!skillSelect?.find((a) => course.skill.includes(a))
   );
-
   return (
     <S.HomeContainer>
       <Menu />
       <S.ContainerCourses column>
-        <S.ContainerGeneric column>
+        <S.ContentCourses column>
           <S.Title>Courses based on your skills</S.Title>
           {userContent?.checkedSkills?.length >= 2 && (
             <Swiper
               loop={true}
-              spaceBetween={10}
+              spaceBetween={80}
               slidesPerView={3}
               navigation={true}
               modules={[Navigation]}
@@ -53,10 +34,12 @@ const Home = () => {
             >
               {courseSelected?.map((course, index) => {
                 return (
-                  <SwiperSlide onClick={() => handleShowModal()} key={index}>
+                  <SwiperSlide key={index}>
                     <Course
+                      like={course.like}
                       title={course.title}
                       skill={course.skill}
+                      videoId={course.videoId}
                       description={course.description}
                     />
                   </SwiperSlide>
@@ -64,30 +47,59 @@ const Home = () => {
               })}
             </Swiper>
           )}
-        </S.ContainerGeneric>
-        <S.ContainerGeneric column>
+        </S.ContentCourses>
+        <S.ContentCourses column>
           <S.Title>Courses Avaliable</S.Title>
           <Swiper
             loop={true}
-            spaceBetween={10}
+            spaceBetween={80}
             slidesPerView={3}
             navigation={true}
             modules={[Navigation]}
             className="mySwiper"
           >
-            {courses?.map((course, index) => {
+            {userContent?.myCourses?.map((item: course, index: number) => {
               return (
-                <SwiperSlide onClick={() => handleShowModal()} key={index}>
+                <SwiperSlide key={index}>
                   <Course
-                    title={course.title}
-                    skill={course.skill}
-                    description={course.description}
+                    like={item.like}
+                    title={item.title}
+                    skill={item.skill}
+                    videoId={item.videoId}
+                    description={item.description}
                   />
                 </SwiperSlide>
               );
             })}
           </Swiper>
-        </S.ContainerGeneric>
+        </S.ContentCourses>
+        {userContent?.likedCourse?.length > 0 && (
+          <S.ContentCourses column>
+            <S.Title>Liked courses</S.Title>
+            <Swiper
+              loop={true}
+              spaceBetween={80}
+              slidesPerView={3}
+              navigation={true}
+              modules={[Navigation]}
+              className="mySwiper"
+            >
+              {userContent?.likedCourse?.map((item: course, index: number) => {
+                return (
+                  <SwiperSlide key={index}>
+                    <Course
+                      like={item.like}
+                      title={item.title}
+                      skill={item.skill}
+                      videoId={item.videoId}
+                      description={item.description}
+                    />
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          </S.ContentCourses>
+        )}
       </S.ContainerCourses>
     </S.HomeContainer>
   );

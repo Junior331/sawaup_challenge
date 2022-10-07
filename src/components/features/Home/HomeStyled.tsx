@@ -28,26 +28,6 @@ export const ContainerCourses = styled(ContainerGeneric)`
   padding: 15px;
   overflow: hidden;
   max-height: 100vh;
-  .swiper {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    padding: 10px 0;
-    max-width: calc(100vw - 370px);
-    .swiper-slide {
-      display: flex;
-      text-align: center;
-      background: #fff;
-      align-items: center;
-      justify-content: center;
-      img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
-  }
 
   &::-webkit-scrollbar {
     width: 10px;
@@ -64,15 +44,10 @@ export const ContainerCourses = styled(ContainerGeneric)`
   &:hover {
     overflow-y: auto;
   }
+
   ${media.lessThan('medium')`
     &:hover {
      overflow: initial;
-    }
-    .swiper {
-      max-width: 100vw;
-      .swiper-button-next{
-        right: 3%;
-      }
     }
   `}
 `;
@@ -86,19 +61,43 @@ export const Course = styled(ContainerGeneric)`
   background-color: transparent;
   box-shadow: 1.1px 1.1px 4px ${(props) => props.theme.palette.background.main};
 `;
-export const ContentCourses = styled(ContainerGeneric)``;
+export const ContentCourses = styled(ContainerGeneric)<{ small?: boolean }>`
+  .swiper {
+    margin: 0;
+    width: 100%;
+    height: 540px;
+    padding: 10px 0;
+    max-width: calc(100vw - 370px);
+    .swiper-slide {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      min-width: 310px;
+      text-align: center;
+      background: #fff;
+      align-items: center;
+      justify-content: center;
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
 
-export const Iframe = styled.iframe`
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  min-height: 425px;
-  line-height: 20px;
-  border-radius: 5px;
   ${media.lessThan('medium')`
-    width: 95%;
-    min-height: 0px;
-    max-height: 225px;
+    &:hover {
+     overflow: initial;
+    }
+    .swiper {
+      max-width: 100vw;
+    }
   `}
+
+  ${(props) =>
+    props.small &&
+    css`
+      max-width: 310px;
+    `};
 `;

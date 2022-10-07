@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import media from 'styled-media-query';
 
 const ContainerGeneric = styled.div`
   display: flex;
@@ -15,9 +16,9 @@ export const CourseContainer = styled(ContainerGeneric)`
 `;
 export const Image = styled.img`
   width: 100%;
+  cursor: pointer;
 `;
 export const Title = styled.h2`
-  margin: 5px;
   color: ${(props) => props.theme.palette.text.dark};
   font-size: ${(props) => props.theme.typography.fontSizeRegular}rem;
 `;
@@ -27,6 +28,7 @@ export const Skills = styled.ul`
   flex-wrap: wrap;
   overflow: hidden;
   max-width: 270px;
+  padding: 5px 15px;
   align-items: start;
   justify-content: start;
 `;
@@ -40,8 +42,53 @@ export const Skill = styled.li`
   font-size: ${(props) => props.theme.typography.fontSize - 0.4}rem;
 `;
 export const Text = styled.p`
-  margin: 5px;
+  margin: 5px 15px;
   text-align: start;
   color: ${(props) => props.theme.palette.text.dark};
   font-size: ${(props) => props.theme.typography.fontSize - 0.4}rem;
+`;
+export const Iframe = styled.iframe`
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  min-height: 425px;
+  line-height: 20px;
+  border-radius: 5px;
+  ${media.lessThan('medium')`
+    width: 95%;
+    min-height: 0px;
+    max-height: 225px;
+  `}
+`;
+export const Content = styled(ContainerGeneric)`
+  width: 100%;
+  padding: 5px 15px;
+  align-items: center;
+  justify-content: space-between;
+`;
+export const Like = styled(ContainerGeneric)<{ acitve?: boolean }>`
+  width: 70px;
+  padding: 0 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: space-between;
+  color: ${(props) => props.theme.palette.text.default};
+  border: 2px solid ${(props) => props.theme.palette.text.medium};
+  font-size: ${(props) => props.theme.typography.fontSize - 0.4}rem;
+
+  p {
+    color: ${(props) => props.theme.palette.text.default};
+  }
+
+  ${(props) =>
+    props.acitve &&
+    css`
+      color: ${props.theme.palette.text.light};
+      background-color: ${props.theme.palette.text.medium};
+      p {
+        color: ${props.theme.palette.text.light};
+      }
+    `};
 `;

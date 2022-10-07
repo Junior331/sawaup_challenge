@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useMemo, useState } from 'react';
+import { courses } from '../../../service/mock/courses';
 import { contentContextType } from './@types';
 
 type ContentPropsType = {
@@ -12,9 +13,9 @@ export const ContentContext = createContext<ContentPropsType>(
 );
 
 export const ContentProvider = ({ children }: { children: ReactNode }) => {
-  const [userContent, setUserContent] = useState<contentContextType>(
-    {} as contentContextType
-  );
+  const [userContent, setUserContent] = useState<contentContextType>({
+    myCourses: courses
+  } as contentContextType);
   const value = useMemo(
     () => ({ userContent, setUserContent }),
     [userContent, setUserContent]

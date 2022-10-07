@@ -9,7 +9,6 @@ const Menu = () => {
   const { userContent, setUserContent } = useContentUser();
   const [selectSkills, setSelectSkills] = useState(skills);
   const [count, setCount] = useState(0);
-  console.log('userContent ::', userContent.checkedSkills);
 
   const handleChange = (skill: { status: boolean; label: string }) => {
     const newArray = selectSkills?.map((item: skillType) => {
