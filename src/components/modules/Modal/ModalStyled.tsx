@@ -11,9 +11,19 @@ const StyledModal = styled.div<{
   height: 100%;
   padding: 17px;
   border-radius: 0;
-  position: relative;
+  position: sticky;
   border: 5px solid #ddd;
+  color: ${({ theme }) => theme.palette.text.light};
+  font-size: ${({ theme }) => theme.typography.fontSizeBold}rem;
   background-color: ${({ theme }) => theme.palette.background.light};
+  svg {
+    top: -16px;
+    right: -15px;
+    cursor: pointer;
+    position: absolute;
+    border-radius: 100%;
+    background: ${({ theme }) => theme.palette.text.medium};
+  }
   ${(props) => media.greaterThan('medium')`
     width: 100%;
     height: initial;

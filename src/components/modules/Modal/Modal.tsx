@@ -1,11 +1,10 @@
+import { AiFillCloseCircle } from 'react-icons/ai';
 import * as S from './ModalStyled';
 import { useModal } from './useModal';
 
 const Modal = () => {
-  const { open, closeModal, showModal, content, maxWidth, small, padding } =
-    useModal();
+  const { open, closeModal, content, maxWidth, small, padding } = useModal();
   const handleClose = () => {
-    showModal(<></>, '0px', false, '0');
     closeModal();
   };
 
@@ -19,8 +18,9 @@ const Modal = () => {
           maxWidth={maxWidth}
           onClick={(e) => e.stopPropagation()}
         >
+          <AiFillCloseCircle onClick={handleClose} />
           <S.Close onClick={handleClose} />
-          <S.StyledModalBody>{content}</S.StyledModalBody>
+          {open && <S.StyledModalBody>{content}</S.StyledModalBody>}
         </S.StyledModal>
       </S.StyledModalOverlay>
     </>
