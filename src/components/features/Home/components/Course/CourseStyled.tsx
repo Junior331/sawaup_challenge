@@ -68,8 +68,8 @@ export const Content = styled(ContainerGeneric)`
   justify-content: space-between;
 `;
 export const Like = styled(ContainerGeneric)<{ acitve?: boolean }>`
-  width: 70px;
   padding: 0 5px;
+  min-width: 70px;
   cursor: pointer;
   border-radius: 5px;
   align-items: center;
@@ -80,6 +80,10 @@ export const Like = styled(ContainerGeneric)<{ acitve?: boolean }>`
 
   p {
     color: ${(props) => props.theme.palette.text.default};
+  }
+
+  svg {
+    overflow: visible;
   }
 
   ${(props) =>
